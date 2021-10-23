@@ -13,6 +13,7 @@ public class BaseService
 {
     public static WebDriver driver;
     WebDriverWait wait;
+    WebElement element;
 
     public void explicitWait(int time)
     {
@@ -20,25 +21,25 @@ public class BaseService
     }
     public WebElement findElementByXpath(String path)
     {
-        WebElement element = driver.findElement(By.xpath(path));
+        element = driver.findElement(By.xpath(path));
         return element;
     }
 
-    public Boolean validateIfElementIsDisplayed(WebElement element)
+    public Boolean validateIfElementIsDisplayed(String path)
     {
         Boolean flag = false;
         explicitWait(10);
-        wait.until(ExpectedConditions.visibilityOf(element));
+        element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(path)));
         if(element.isDisplayed())
             flag = true;
         return flag;
     }
 
-    public Boolean validateIfElementIsSelected(WebElement element)
+    public Boolean validateIfElementIsSelected(String path)
     {
         Boolean flag = false;
         explicitWait(10);
-        wait.until(ExpectedConditions.visibilityOf(element));
+        element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(path)));
         if(element.isSelected())
             flag = true;
         return flag;

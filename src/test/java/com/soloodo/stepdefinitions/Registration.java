@@ -2,7 +2,6 @@ package com.soloodo.stepdefinitions;
 
 import com.soloodo.service.BaseService;
 import com.soloodo.common.Utils;
-import com.soloodo.assertion.CustomAssertion;
 import com.soloodo.constant.Xpath;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -10,6 +9,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.WebElement;
+import org.testng.asserts.Assertion;
 
 import java.util.Properties;
 
@@ -17,22 +17,17 @@ import java.util.Properties;
 public class Registration
 {
     String lstname = "user"+ RandomStringUtils.randomNumeric(3);
-    CustomAssertion assertion = new CustomAssertion();
+    Assertion assertion = new Assertion();
     BaseService baseService = new BaseService();
 
     Utils utils = new Utils();
 
     WebElement element;
 
-    /**
-     * Background scenario
-     */
-
     @Given("I am on soloodo homepage")
     public void validateHomepage()
     {
-        element = baseService.findElementByXpath(Xpath.REGISTRATION_LINK);
-        Boolean flag = baseService.validateIfElementIsDisplayed(element);
+        Boolean flag = baseService.validateIfElementIsDisplayed(Xpath.REGISTRATION_LINK);
         if (flag == true)
         {
             assertion.assertTrue(true, "Assertion passed");
@@ -54,8 +49,7 @@ public class Registration
     @Then("I should be navigated to registration page")
     public void navigationToRegistrationPage()
     {
-        element = baseService.findElementByXpath(Xpath.REGISTER_FORM);
-        Boolean flag = baseService.validateIfElementIsDisplayed(element);
+        Boolean flag = baseService.validateIfElementIsDisplayed(Xpath.REGISTER_FORM);
         if (flag == true)
         {
             assertion.assertTrue(true, "Assertion passed");
@@ -70,8 +64,7 @@ public class Registration
     @When("I select shipper option")
     public void shipperOptionSelection()
     {
-        element = baseService.findElementByXpath(Xpath.SHIPPER_BUTTON);
-        Boolean flag = baseService.validateIfElementIsSelected(element);
+        Boolean flag = baseService.validateIfElementIsSelected(Xpath.SHIPPER_BUTTON);
         if (flag == false)
         {
             baseService.actionClick(element);
@@ -144,9 +137,8 @@ public class Registration
     @Then("I should be navigated to welcome page of shipper")
     public void navigationToShipperWelcome()
     {
-        element = baseService.findElementByXpath(Xpath.SUCCESS_MSG);
         baseService.implicitWait(30);
-        Boolean flag = baseService.validateIfElementIsDisplayed(element);
+        Boolean flag = baseService.validateIfElementIsDisplayed(Xpath.SUCCESS_MSG);
         if (flag == true)
         {
             assertion.assertTrue(true, "Assertion passed");
@@ -161,8 +153,7 @@ public class Registration
     @When("I select carrier option")
     public void selectCarrierOption()
     {
-        element = baseService.findElementByXpath(Xpath.CARRIER_BUTTON);
-        Boolean flag = baseService.validateIfElementIsSelected(element);
+        Boolean flag = baseService.validateIfElementIsSelected(Xpath.CARRIER_BUTTON);
         if (flag == false)
         {
             baseService.actionClick(element);
@@ -172,9 +163,8 @@ public class Registration
     @Then("user navigates to welcome page of carrier")
     public void navigationToCarrierWelcome()
     {
-        element = baseService.findElementByXpath(Xpath.CARRIER_SUCCESS);
         baseService.implicitWait(30);
-        Boolean flag = baseService.validateIfElementIsDisplayed(element);
+        Boolean flag = baseService.validateIfElementIsDisplayed(Xpath.CARRIER_SUCCESS);
         if (flag == true)
         {
             assertion.assertTrue(true, "Assertion passed");

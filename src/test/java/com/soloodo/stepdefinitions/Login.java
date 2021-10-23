@@ -1,17 +1,17 @@
 package com.soloodo.stepdefinitions;
 
 import com.soloodo.service.BaseService;
-import com.soloodo.assertion.CustomAssertion;
 import com.soloodo.constant.Xpath;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.WebElement;
+import org.testng.asserts.Assertion;
 
 public class Login
 {
     BaseService baseService = new BaseService();
-    CustomAssertion assertion = new CustomAssertion();
+    Assertion assertion = new Assertion();
 
     WebElement element;
     
@@ -25,8 +25,7 @@ public class Login
     @Then("I should be navigated to login page")
     public void navigationToLoginPage()
     {
-        element = baseService.findElementByXpath(Xpath.LOGIN_FORM);
-        Boolean flag = baseService.validateIfElementIsDisplayed(element);
+        Boolean flag = baseService.validateIfElementIsDisplayed(Xpath.LOGIN_FORM);
         if (flag == true)
         {
             assertion.assertTrue(true, "Assertion passed");
