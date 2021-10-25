@@ -11,9 +11,6 @@ import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.WebElement;
 import org.testng.asserts.Assertion;
 
-import java.util.Properties;
-
-
 public class Registration
 {
     String lstname = "user"+ RandomStringUtils.randomNumeric(3);

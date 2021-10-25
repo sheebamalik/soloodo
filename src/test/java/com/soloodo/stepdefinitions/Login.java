@@ -4,7 +4,6 @@ import com.soloodo.common.Utils;
 import com.soloodo.service.BaseService;
 import com.soloodo.constant.Xpath;
 import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.WebElement;
