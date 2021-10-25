@@ -24,22 +24,6 @@ public class addCompany
     Utils utils = new Utils();
     Properties prop = utils.readConfigFile();
 
-    @When("^I enter email address on login page$")
-    public void enterEmailOnLogin()
-    {
-        String email = prop.getProperty("newemail");
-        element = addCompanyService.findElementByXpath(Xpath.LOGIN_INPUT_FIELDS.replace("$1$","email"));
-        addCompanyService.enterValueInField(element, email);
-    }
-
-    @And("^I enter password on login page$")
-    public void enterPasswordOnLogin()
-    {
-        String password = prop.getProperty("password");
-        element = addCompanyService.findElementByXpath(Xpath.LOGIN_INPUT_FIELDS.replace("$1$","password"));
-        addCompanyService.enterValueInField(element, password);
-    }
-
     @Then("I should be able to see email verified message")
     public void emailVerified()
     {

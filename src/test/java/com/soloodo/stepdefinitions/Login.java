@@ -43,16 +43,18 @@ public class Login
         }
     }
 
-   @When("^I enter email address \"(.*)\" on login page$")
-   public void enterEmailOnLogin(String email)
-   {
-       element = baseService.findElementByXpath(Xpath.LOGIN_INPUT_FIELDS.replace("$1$","email"));
-       baseService.enterValueInField(element, email);
-   }
-
-    @And("^I enter password \"(.*)\" on login page$")
-    public void enterPasswordOnLogin(String password)
+    @When("I enter new email address on login page")
+    public void enterEmailOnLogin()
     {
+        String email = prop.getProperty("newemail");
+        element = baseService.findElementByXpath(Xpath.LOGIN_INPUT_FIELDS.replace("$1$","email"));
+        baseService.enterValueInField(element, email);
+    }
+
+    @And("I enter password on login page")
+    public void enterPasswordOnLogin()
+    {
+        String password = prop.getProperty("password");
         element = baseService.findElementByXpath(Xpath.LOGIN_INPUT_FIELDS.replace("$1$","password"));
         baseService.enterValueInField(element, password);
     }
@@ -66,6 +68,14 @@ public class Login
     }
 
     //@Then I should be navigated to welcome page of shipper in Registration.java
+
+    @When("I enter registered email address on login page")
+    public void enterRegisteredEmailOnLogin()
+    {
+        String email = prop.getProperty("email");
+        element = baseService.findElementByXpath(Xpath.LOGIN_INPUT_FIELDS.replace("$1$","email"));
+        baseService.enterValueInField(element, email);
+    }
 
     @Then("I should be navigated to Dashboard page")
     public void saveDetails()
