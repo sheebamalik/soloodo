@@ -6,7 +6,7 @@ import org.testng.annotations.DataProvider;
 
 @CucumberOptions(
         features =  "src/main/java/com/soloodo/feature",
-        tags = "@AddCompany",
+        tags = "@Registration and @Test1",
         glue = "com/soloodo/stepdefinitions",
         plugin = {"html:target/cucumber-reports.html"}
 )
