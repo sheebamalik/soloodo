@@ -5,9 +5,23 @@ Feature: Soloodo login test
     When I click on login link
     Then I should be navigated to login page
 
-    Scenario: As an already registered user, I would like to login to the application
-    Given I should be navigated to login page
-    When I enter email address
-    And I enter password
+    @Test1
+    Scenario Outline: As a first time registered user, I would like to login to the application
+    When I enter email address "<email>" on login page
+    And I enter password "<password>" on login page
     And I click on login button
-    Then I should be logged in to the application
+    Then I should be navigated to welcome page of shipper
+      Examples:
+        | email                     | password |
+        | sheebadmalik0.5@gmail.com | Test@123 |
+
+  @Test2
+    Scenario Outline: As a registered user, I should be able to login to the application
+      When I enter email address "<email>" on login page
+      And I enter password "<password>" on login page
+      And I click on login button
+      Then I should be navigated to Dashboard page
+      Examples:
+        | email                     | password |
+        | sheeba.dmalik05@gmail.com | Test@123 |
+

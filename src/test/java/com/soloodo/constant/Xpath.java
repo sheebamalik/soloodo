@@ -17,7 +17,15 @@ public class Xpath
     public static String SUCCESS_MSG = "//div[text()='Verify your email address']";
     public static String CARRIER_SUCCESS = "//div[@id='intercom-container']";
 
-    //Elemets of login page
+    //Elemets of LoginService page
     public static String LOGIN_FORM="//*[@data-testid='loginForm']";
+    public static String LOGIN_INPUT_FIELDS = "//input[@type='$1$']";
+
+    //Elements of Add Company popup
+    public static String VERIFIED_STATUS = "(//div[contains(text(),'Email verified')])[2]";
+    public static String NEXT_BUTTON = "//span[text()='Next']/parent::button";
+    public static String ADDRESS_INPUT = "//label[contains(text(),'$1$')]/preceding-sibling::input";
+    public static String LATER_BUTTON = "//button[contains(text(),'later')]";
+    public static String PROFILE_ICON = "//button[@name='profile']";
 
 }

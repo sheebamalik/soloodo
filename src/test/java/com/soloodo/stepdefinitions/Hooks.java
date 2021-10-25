@@ -35,7 +35,7 @@ public class Hooks
     public void afterScenario() throws IOException
     {
         utils.takeScreenshotAtEndOfTest(BaseService.driver);
-        BaseService.driver.close();
+       // BaseService.driver.close();
     }
 }
 

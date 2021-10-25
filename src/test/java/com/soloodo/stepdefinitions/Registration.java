@@ -61,18 +61,8 @@ public class Registration
         }
    }
 
-    @When("I select shipper option")
-    public void shipperOptionSelection()
-    {
-        Boolean flag = baseService.validateIfElementIsSelected(Xpath.SHIPPER_BUTTON);
-        if (flag == false)
-        {
-            baseService.actionClick(element);
-        }
-    }
-
-    @When("user selects country")
-    public void user_selects_country()
+    @When("I select country")
+    public void selectCountry()
     {
         element = baseService.findElementByXpath(Xpath.COUNTRY);
         baseService.enterValueInField(element, "Germany");
@@ -103,19 +93,16 @@ public class Registration
         baseService.enterValueInField(element,contact);
     }
 
-    @And("I enter email address")
-    public void enterEmailAddress()
+    @And("^I enter email \"(.*)\"$")
+    public void enterEmailOnReg(String email)
     {
-        String email = lstname+"@gmail.com";
         element = baseService.findElementByXpath(Xpath.INPUT_FIELDS.replace("$1$","email"));
         baseService.enterValueInField(element,email);
     }
 
-    @And("I enter password")
-    public void enterPassword()
+    @And("^I enter password \"(.*)\"$")
+    public void enterPasswordOnReg(String password)
     {
-        Properties prop = utils.readConfigFile();
-        String password = prop.getProperty("password");
         element = baseService.findElementByXpath(Xpath.INPUT_FIELDS.replace("$1$","password"));
         baseService.enterValueInField(element,password);
     }
@@ -156,11 +143,12 @@ public class Registration
         Boolean flag = baseService.validateIfElementIsSelected(Xpath.CARRIER_BUTTON);
         if (flag == false)
         {
+            element = baseService.findElementByXpath(Xpath.SHIPPER_BUTTON);
             baseService.actionClick(element);
         }
     }
 
-    @Then("user navigates to welcome page of carrier")
+    @Then("I should be navigated to welcome page of carrier")
     public void navigationToCarrierWelcome()
     {
         baseService.implicitWait(30);
